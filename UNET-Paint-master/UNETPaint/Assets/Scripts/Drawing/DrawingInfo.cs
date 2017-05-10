@@ -8,5 +8,11 @@ public class DrawingInfo : NetworkBehaviour {
     [SyncVar]
     public int id;
     public List<Vector3> points;
+    [SyncVar (hook = "OnColor")]
+    public Color color;
 
+    private void OnColor(Color newColor)
+    {
+        gameObject.GetComponent<TrailRenderer>().material.color = color;
+    }
 }

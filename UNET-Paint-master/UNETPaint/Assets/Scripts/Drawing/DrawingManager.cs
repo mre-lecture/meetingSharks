@@ -6,12 +6,14 @@ using UnityEngine.Networking;
 public class DrawingManager : NetworkBehaviour {
 
     public GameObject drawingPrefab;
-    GameObject thisDrawing;
+    public float drawingDistance = 10;
+    int thisDrawingId = 0;
     Vector3 startPos;
     Plane objPlane;
+    public Color color;
 
 	void Start () {
-        objPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+        objPlane = new Plane(GetNormalForPlane(), GetPositionForPlane());
         GameObject[] drawings = GameObject.FindGameObjectsWithTag("Drawing");
         foreach(GameObject drawing in drawings)
         {
@@ -19,6 +21,8 @@ public class DrawingManager : NetworkBehaviour {
             if(isLocalPlayer)
                 CmdGetPointsForDrawing(identity.id);
         }
+       
+        color = new Color(Random.value, Random.value, Random.value, 1);
     }
 	
 	void Update () {
@@ -26,10 +30,8 @@ public class DrawingManager : NetworkBehaviour {
         {
             if (isLocalPlayer)
             {
-                thisDrawing = (GameObject)Instantiate(drawingPrefab, this.transform.position,
-                    Quaternion.identity);
-                int newDrawingId = GetLatestDrawingId() + 1;
-                thisDrawing.GetComponent<DrawingInfo>().id = newDrawingId;
+                objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
+                thisDrawingId = GetLatestDrawingId() + 1;
                 Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 float rayDistance;
                 if (objPlane.Raycast(mRay, out rayDistance))
@@ -37,31 +39,28 @@ public class DrawingManager : NetworkBehaviour {
                     startPos = mRay.GetPoint(rayDistance);
                 }
 
-                CmdInstantiateDrawing(newDrawingId);
+                CmdInstantiateDrawing(thisDrawingId, color);
             }
         } else if(Input.GetMouseButton(0))
         {
             if (isLocalPlayer)
             {
+                objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
                 Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 float rayDistance;
                 if (objPlane.Raycast(mRay, out rayDistance))
                 {
                     Vector3 point = mRay.GetPoint(rayDistance);
-                    thisDrawing.transform.position = point;
-
-                    CmdDrawToPoint(thisDrawing.GetComponent<DrawingInfo>().id, point);
+                    CmdDrawToPoint(thisDrawingId, point);
                 }
             }
         } else if(Input.GetMouseButtonUp(0))
         {
-            if(thisDrawing != null && Vector3.Distance(thisDrawing.transform.position, startPos) < 0.1)
+            if (isLocalPlayer)
             {
-                if (isLocalPlayer)
+                if (Vector3.Distance(GetDrawingById(thisDrawingId).transform.position, startPos) < 0.1)
                 {
-                    Destroy(thisDrawing);
-
-                    CmdDestroyDrawing(thisDrawing.GetComponent<DrawingInfo>().id);
+                    CmdDestroyDrawing(thisDrawingId);
                 }
             }
         }
@@ -96,11 +95,14 @@ public class DrawingManager : NetworkBehaviour {
     }
 
     [Command]
-    void CmdInstantiateDrawing(int id)
+    void CmdInstantiateDrawing(int id, Color color)
     {
         GameObject drawing = (GameObject)Instantiate(drawingPrefab, this.transform.position,
                 Quaternion.identity);
-        drawing.GetComponent<DrawingInfo>().id = id;
+        DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
+        drawingInfo.id = id;
+        drawingInfo.color = color;
+        drawing.GetComponent<TrailRenderer>().material.color = color;
         if (isServer)
         {
             NetworkServer.Spawn(drawing);
@@ -146,5 +148,15 @@ public class DrawingManager : NetworkBehaviour {
         drawing.GetComponent<DrawingInfo>().points.Add(point);
     }
 
+    private Vector3 GetNormalForPlane()
+    {
+        return Camera.main.transform.forward * -1;
+    }
+ 
+    private Vector3 GetPositionForPlane()
+    {
+        Vector3 position = Camera.main.transform.position + Camera.main.transform.forward * drawingDistance;
+        return position;
+    }
 
 }

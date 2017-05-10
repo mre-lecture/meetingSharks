@@ -2,166 +2,85 @@ Initialize engine version: 5.6.0f3 (497a0f351392)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 850M (ID=0x1391)
+    Renderer: NVIDIA GeForce GTX 650 Ti BOOST (ID=0x11c2)
     Vendor:   NVIDIA
-    VRAM:     2019 MB
-    Driver:   22.21.13.8205
+    VRAM:     2016 MB
+    Driver:   21.21.13.7653
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.085 seconds
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 1.263665 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 55c -> priority: 1 
-  Thread -> id: af4 -> priority: 1 
-Initialize engine version: 5.6.0f3 (497a0f351392)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 850M (ID=0x1391)
-    Vendor:   NVIDIA
-    VRAM:     2019 MB
-    Driver:   22.21.13.8205
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.020 seconds
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 1.203314 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2c94 -> priority: 1 
-  Thread -> id: 5cc -> priority: 1 
-Initialize engine version: 5.6.0f3 (497a0f351392)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 850M (ID=0x1391)
-    Vendor:   NVIDIA
-    VRAM:     2019 MB
-    Driver:   22.21.13.8205
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 - Completed reload, in  0.024 seconds
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.224252 ms
+UnloadTime: 1.258954 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 12a4 -> priority: 1 
-  Thread -> id: 2c24 -> priority: 1 
+  Thread -> id: 3cb0 -> priority: 1 
+  Thread -> id: 1ef0 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.340343 ms
+UnloadTime: 0.287027 ms
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 329.
-Total: 0.544796 ms (FindLiveObjects: 0.034075 ms CreateObjectMapping: 0.028327 ms MarkObjects: 0.469666 ms  DeleteObjects: 0.011905 ms)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.630694 ms
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 293.
-Total: 0.351428 ms (FindLiveObjects: 0.018885 ms CreateObjectMapping: 0.016421 ms MarkObjects: 0.227443 ms  DeleteObjects: 0.087857 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.282456 ms
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 314.
-Total: 0.355944 ms (FindLiveObjects: 0.013548 ms CreateObjectMapping: 0.015190 ms MarkObjects: 0.319405 ms  DeleteObjects: 0.006979 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.402747 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 319.
-Total: 0.369903 ms (FindLiveObjects: 0.018885 ms CreateObjectMapping: 0.015190 ms MarkObjects: 0.325153 ms  DeleteObjects: 0.009853 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.493888 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 319.
-Total: 0.478698 ms (FindLiveObjects: 0.030380 ms CreateObjectMapping: 0.027917 ms MarkObjects: 0.407673 ms  DeleteObjects: 0.012316 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 332.
+Total: 0.421818 ms (FindLiveObjects: 0.020868 ms CreateObjectMapping: 0.017105 ms MarkObjects: 0.374607 ms  DeleteObjects: 0.008894 ms)
 
 Initialize engine version: 5.6.0f3 (497a0f351392)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 850M (ID=0x1391)
+    Renderer: NVIDIA GeForce GTX 650 Ti BOOST (ID=0x11c2)
     Vendor:   NVIDIA
-    VRAM:     2019 MB
-    Driver:   22.21.13.8205
+    VRAM:     2016 MB
+    Driver:   21.21.13.7653
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.024 seconds
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\UgurT\Downloads\UNET-Paint-master\UNET-Paint-master\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.023 seconds
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.874559 ms
+UnloadTime: 1.129980 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2bc8 -> priority: 1 
-  Thread -> id: 2db8 -> priority: 1 
+  Thread -> id: 1ddc -> priority: 1 
+  Thread -> id: 3bc8 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.387556 ms
+UnloadTime: 0.282238 ms
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 319.
-Total: 0.330490 ms (FindLiveObjects: 0.020937 ms CreateObjectMapping: 0.019706 ms MarkObjects: 0.277940 ms  DeleteObjects: 0.011495 ms)
-
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-Log: connection {3} has been disconnected by timeout; address {::ffff:127.0.0.1:57556}
-ServerDisconnected due to error: Timeout
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 322.
+Total: 0.362291 ms (FindLiveObjects: 0.023947 ms CreateObjectMapping: 0.021552 ms MarkObjects: 0.305843 ms  DeleteObjects: 0.010605 ms)
 
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
-Log: connection {2} has been disconnected by timeout; address {::ffff:127.0.0.1:63780}
-ServerDisconnected due to error: Timeout
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
