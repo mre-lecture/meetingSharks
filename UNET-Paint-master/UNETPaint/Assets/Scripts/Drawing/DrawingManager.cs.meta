@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 84108f2e0b3aa02469992d259ae6eabd
+timeCreated: 1494351690
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - drawingPrefab: {fileID: 1700223730462396, guid: 9e6d838c12a62f947b81aca4e795a061,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
