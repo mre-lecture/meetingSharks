@@ -10,9 +10,17 @@ public class DrawingInfo : NetworkBehaviour {
     public List<Vector3> points;
     [SyncVar (hook = "OnColor")]
     public Color color;
+    [SyncVar(hook = "OnWidth")]
+    public float width;
 
     private void OnColor(Color newColor)
     {
         gameObject.GetComponent<TrailRenderer>().material.color = color;
+    }
+
+    public void OnWidth(float newWidth)
+    {
+        gameObject.GetComponent<TrailRenderer>().startWidth = newWidth;
+        gameObject.GetComponent<TrailRenderer>().endWidth = newWidth;
     }
 }

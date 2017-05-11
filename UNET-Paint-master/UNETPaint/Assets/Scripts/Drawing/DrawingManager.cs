@@ -6,11 +6,14 @@ using UnityEngine.Networking;
 public class DrawingManager : NetworkBehaviour {
 
     public GameObject drawingPrefab;
-    public float drawingDistance = 10;
+
     int thisDrawingId = 0;
     Vector3 startPos;
     Plane objPlane;
+
+    public float drawingDistance;
     public Color color;
+    public float width;
 
 	void Start () {
         objPlane = new Plane(GetNormalForPlane(), GetPositionForPlane());
@@ -21,8 +24,10 @@ public class DrawingManager : NetworkBehaviour {
             if(isLocalPlayer)
                 CmdGetPointsForDrawing(identity.id);
         }
-       
+
+        drawingDistance = 10;
         color = new Color(Random.value, Random.value, Random.value, 1);
+        width = 0.1f;
     }
 	
 	void Update () {
@@ -39,7 +44,7 @@ public class DrawingManager : NetworkBehaviour {
                     startPos = mRay.GetPoint(rayDistance);
                 }
 
-                CmdInstantiateDrawing(thisDrawingId, color);
+                CmdInstantiateDrawing(thisDrawingId, color, width);
             }
         } else if(Input.GetMouseButton(0))
         {
@@ -95,14 +100,17 @@ public class DrawingManager : NetworkBehaviour {
     }
 
     [Command]
-    void CmdInstantiateDrawing(int id, Color color)
+    void CmdInstantiateDrawing(int id, Color color, float width)
     {
         GameObject drawing = (GameObject)Instantiate(drawingPrefab, this.transform.position,
                 Quaternion.identity);
         DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
         drawingInfo.id = id;
         drawingInfo.color = color;
+        drawingInfo.width = width;
         drawing.GetComponent<TrailRenderer>().material.color = color;
+        drawing.GetComponent<TrailRenderer>().startWidth = width;
+        drawing.GetComponent<TrailRenderer>().endWidth = width;
         if (isServer)
         {
             NetworkServer.Spawn(drawing);
@@ -157,6 +165,11 @@ public class DrawingManager : NetworkBehaviour {
     {
         Vector3 position = Camera.main.transform.position + Camera.main.transform.forward * drawingDistance;
         return position;
+    }
+
+    public void SetDrawingWidth(float drawingWidth)
+    {
+        width = drawingWidth;
     }
 
 }

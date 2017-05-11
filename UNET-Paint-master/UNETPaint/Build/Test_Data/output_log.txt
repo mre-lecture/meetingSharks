@@ -15,72 +15,23 @@ Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Pa
 Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.024 seconds
+- Completed reload, in  0.022 seconds
 Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.258954 ms
+UnloadTime: 1.275033 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 3cb0 -> priority: 1 
-  Thread -> id: 1ef0 -> priority: 1 
+  Thread -> id: 3c98 -> priority: 1 
+  Thread -> id: 2620 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.287027 ms
+UnloadTime: 0.275396 ms
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 332.
-Total: 0.421818 ms (FindLiveObjects: 0.020868 ms CreateObjectMapping: 0.017105 ms MarkObjects: 0.374607 ms  DeleteObjects: 0.008894 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 384.
+Total: 0.453634 ms (FindLiveObjects: 0.022921 ms CreateObjectMapping: 0.018131 ms MarkObjects: 0.401976 ms  DeleteObjects: 0.010263 ms)
 
-Initialize engine version: 5.6.0f3 (497a0f351392)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 650 Ti BOOST (ID=0x11c2)
-    Vendor:   NVIDIA
-    VRAM:     2016 MB
-    Driver:   21.21.13.7653
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.023 seconds
-Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Ahmet\Desktop\Privates\Unity\Hololens\Github\UNET-Paint\UNETPaint\Build\Test_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 1.129980 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1ddc -> priority: 1 
-  Thread -> id: 3bc8 -> priority: 1 
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.282238 ms
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 322.
-Total: 0.362291 ms (FindLiveObjects: 0.023947 ms CreateObjectMapping: 0.021552 ms MarkObjects: 0.305843 ms  DeleteObjects: 0.010605 ms)
-
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
 reactor filed to acomplish request with code {1234}, bytesReceived {0}
