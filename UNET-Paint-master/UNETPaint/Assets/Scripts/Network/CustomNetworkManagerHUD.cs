@@ -1,37 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class CustomNetworkManagerHUD : MonoBehaviour {
 
-    private CustomNetworkManager networkManager;
-    private string ipAdress;
-
     void Start () {
-        networkManager = gameObject.GetComponent<CustomNetworkManager>();
-        ipAdress = networkManager.networkAddress;
     }
 
-    private void OnGUI()
+    public void StartHost()
     {
-        if (!networkManager.IsClientConnected())
-        {
-            ipAdress = GUILayout.TextField(ipAdress, GUILayout.Width(200));
-            if (GUILayout.Button("Join"))
-            {
-                networkManager.networkAddress = ipAdress;
-                networkManager.JoinRoom();
-            }
-            if (GUILayout.Button("Host"))
-            {
-                networkManager.StartupHost();
-            }
-        } else
-        {
-            if(GUILayout.Button("Back To Lobby")) {
-                networkManager.LeaveRoom();
-            }
-        }
+        NetworkManager.singleton.StartHost();
     }
 
+    public void StartClient()
+    {
+        NetworkManager.singleton.StartClient();
+    }
+
+    public void SetNetworkAddress(string ip)
+    {
+        NetworkManager.singleton.networkAddress = ip;
+    }
 }
