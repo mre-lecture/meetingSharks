@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using HoloToolkit.Unity.InputModule;
+using System;
 
-public class DrawingManager : NetworkBehaviour {
+public class DrawingManager : NetworkBehaviour, IInputClickHandler
+{
 
     public GameObject drawingPrefab;
 
@@ -14,6 +17,10 @@ public class DrawingManager : NetworkBehaviour {
     public float drawingDistance;
     public Color color;
     public float width;
+
+    public bool inputDown;
+    public bool inputUp;
+    public bool pressing;
 
 	void Start () {
         objPlane = new Plane(GetNormalForPlane(), GetPositionForPlane());
@@ -26,13 +33,15 @@ public class DrawingManager : NetworkBehaviour {
         }
 
         drawingDistance = 10;
-        color = new Color(Random.value, Random.value, Random.value, 1);
+        color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
         width = 0.1f;
     }
 	
 	void Update () {
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(0) || (!pressing && inputDown))
         {
+            inputDown = false;
+            pressing = true;
             if (isLocalPlayer)
             {
                 objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
@@ -46,8 +55,9 @@ public class DrawingManager : NetworkBehaviour {
 
                 CmdInstantiateDrawing(thisDrawingId, color, width);
             }
-        } else if(Input.GetMouseButton(0))
+        } else if(Input.GetMouseButton(0) || (pressing && !inputDown))
         {
+            inputDown = false;
             if (isLocalPlayer)
             {
                 objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
@@ -59,8 +69,10 @@ public class DrawingManager : NetworkBehaviour {
                     CmdDrawToPoint(thisDrawingId, point);
                 }
             }
-        } else if(Input.GetMouseButtonUp(0))
+        } else if(Input.GetMouseButtonUp(0) || (inputDown && pressing))
         {
+            pressing = false;
+            inputDown = false;
             if (isLocalPlayer)
             {
                 if (Vector3.Distance(GetDrawingById(thisDrawingId).transform.position, startPos) < 0.1)
@@ -172,4 +184,8 @@ public class DrawingManager : NetworkBehaviour {
         width = drawingWidth;
     }
 
+    void IInputClickHandler.OnInputClicked(InputClickedEventData eventData)
+    {
+        inputDown = true;
+    }
 }

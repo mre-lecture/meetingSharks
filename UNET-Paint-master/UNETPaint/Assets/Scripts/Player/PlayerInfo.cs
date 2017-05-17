@@ -51,6 +51,8 @@ public class PlayerInfo : NetworkBehaviour {
         usernameText = usernameSlotInstance.GetComponent<Text>();
         usernameText.text = username;
         usernameSlotInstance.transform.SetParent(usernamelistPanel.transform);
+        usernameSlotInstance.transform.localScale = new Vector3(1, 1, 1);
+        usernameSlotInstance.transform.localPosition = new Vector3(usernameSlotInstance.transform.localPosition.x, usernameSlotInstance.transform.localPosition.y, 0);
     }
 
     private void OnDestroy()
