@@ -11,11 +11,12 @@ public class DrawingManager : NetworkBehaviour
     private int thisDrawingId = 0;
     private Plane objPlane;
     private List<GameObject> drawingMeshes;
+    public string mode;
     
     public float drawingDistance;
     public Color color;
     public float width;
-    public bool drawMesh;
+    public string drawingObjectName;
 
     public bool inputDown;
     public bool inputUp;
@@ -25,7 +26,7 @@ public class DrawingManager : NetworkBehaviour
         objPlane = new Plane(GetNormalForPlane(), GetPositionForPlane());
         cursor = GameObject.Find("Cursor");
         drawingMeshes = new List<GameObject>();
-
+        mode = "drawing";
         drawingDistance = 10;
         color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
         width = 0.1f;
@@ -36,7 +37,7 @@ public class DrawingManager : NetworkBehaviour
         {
             inputDown = false;
             pressing = true;
-            if (isLocalPlayer)
+            if (isLocalPlayer && mode == "drawing")
             {
                 objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
                 thisDrawingId = GetLatestDrawingId() + 1;
@@ -47,14 +48,14 @@ public class DrawingManager : NetworkBehaviour
                     Vector3 lastPos = mRay.GetPoint(rayDistance);
                     GameObject localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
                     PlayerInfo playerInfo = localPlayer.GetComponent<PlayerInfo>();
-                    CmdInstantiateDrawing(thisDrawingId, lastPos, color, width, drawMesh, playerInfo.username);
+                    CmdInstantiateDrawing(thisDrawingId, lastPos, color, width, playerInfo.username, drawingObjectName);
                 }
                 
             }
         } else if((pressing && !inputDown))
         {
             inputDown = false;
-            if (isLocalPlayer)
+            if (isLocalPlayer && mode == "drawing")
             {
                 objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
                 Ray mRay = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(cursor.transform.localPosition));
@@ -69,7 +70,7 @@ public class DrawingManager : NetworkBehaviour
         {
             pressing = false;
             inputDown = false;
-            if (isLocalPlayer)
+            if (isLocalPlayer && mode == "drawing")
             {
                 GameObject drawing = GetDrawingById(thisDrawingId);
                 if (drawing)
@@ -121,9 +122,9 @@ public class DrawingManager : NetworkBehaviour
     }
 
     [Command]
-    void CmdInstantiateDrawing(int id, Vector3 lastPos, Color color, float width, bool drawMesh, string username)
+    void CmdInstantiateDrawing(int id, Vector3 lastPos, Color color, float width, string username, string drawingObjectName)
     {
-        GameObject drawing = (GameObject)Instantiate(Resources.Load("Prefabs/DrawingObjects/Drawing"), this.transform.position,
+        GameObject drawing = (GameObject)Instantiate(Resources.Load("Prefabs/Drawing"), this.transform.position,
                 Quaternion.identity);
         DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
         TrailRenderer drawingTrailRenderer = drawing.GetComponent<TrailRenderer>();
@@ -134,18 +135,8 @@ public class DrawingManager : NetworkBehaviour
         drawingTrailRenderer.material.color = color;
         drawingTrailRenderer.startWidth = width;
         drawingTrailRenderer.endWidth = width;
-        drawingInfo.drawMesh = drawMesh;
         drawingInfo.username = username;
-
-        /*
-        if(drawMesh)
-        {
-            drawingTrailRenderer.enabled = false;
-        } else
-        {
-            drawingTrailRenderer.enabled = true;
-        }
-        */
+        drawingInfo.drawingObjectName = drawingObjectName;
 
         NetworkServer.Spawn(drawing);
     }
@@ -157,7 +148,6 @@ public class DrawingManager : NetworkBehaviour
         if (drawing != null)
         {
             DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
-            drawing.GetComponent<TrailRenderer>().enabled = !drawingInfo.drawMesh;
             if (Vector3.Distance(drawingInfo.lastPos, point) > 0.1)
             {
                 drawing.transform.position = point;
@@ -174,10 +164,22 @@ public class DrawingManager : NetworkBehaviour
         {
             drawing.transform.position = point;
             DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
+            TrailRenderer drawingTrailRenderer = drawing.GetComponent<TrailRenderer>();
             drawingInfo.points.Add(point);
-            if (drawingInfo.drawMesh)
+            string drawingObjectName = drawingInfo.drawingObjectName;
+
+            if (drawingObjectName == "" || drawingObjectName == "Line")
             {
-                GameObject cube = (GameObject)Instantiate(Resources.Load("Prefabs/DrawingObjects/Cube"));
+                drawingTrailRenderer.enabled = true;
+            }
+            else
+            {
+                drawingTrailRenderer.enabled = false;
+            }
+
+            if (drawingObjectName != "" && drawingObjectName != "Line")
+            {
+                GameObject cube = (GameObject)Instantiate(Resources.Load("Prefabs/DrawingObjects/" + drawingObjectName));
                 MeshRenderer mesh = cube.GetComponent<MeshRenderer>();
                 mesh.material.color = color;
 
@@ -255,6 +257,24 @@ public class DrawingManager : NetworkBehaviour
                 Destroy(drawing);
             }
         }
+    }
+
+    public void MoveDrawingTo(int id, Vector3 position)
+    {
+        CmdMoveDrawingTo(id, position);
+    }
+
+    [Command]
+    private void CmdMoveDrawingTo(int id, Vector3 position)
+    {
+        RpcMoveDrawingTo(id, position);
+    }
+
+    [ClientRpc]
+    private void RpcMoveDrawingTo(int id, Vector3 position)
+    {
+        GameObject drawing = GetDrawingById(id);
+        drawing.transform.position = position;
     }
 
     public override void OnDeserialize(NetworkReader reader, bool initialState)

@@ -144,6 +144,7 @@ MonoBehaviour:
   width: 0
   drawMesh: 0
   username: 
+  drawingObjectName: 
 --- !u!114 &114869516634607704
 MonoBehaviour:
   m_ObjectHideFlags: 1

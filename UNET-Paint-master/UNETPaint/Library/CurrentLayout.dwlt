@@ -67,10 +67,10 @@ MonoBehaviour:
     y: 0
     width: 832
     height: 771
-  m_MinSize: {x: 204, y: 421}
-  m_MaxSize: {x: 4004, y: 8021}
+  m_MinSize: {x: 204, y: 442}
+  m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 108
+  controlID: 61
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -86,9 +86,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 357
+    y: 358
     width: 358
-    height: 414
+    height: 413
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 17}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 58
+  controlID: 34
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 132
+  controlID: 59
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,7 +189,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 358
-    height: 357
+    height: 358
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 0
-  controlID: 107
+  controlID: 60
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -414,9 +414,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 449
+    y: 450
     width: 356
-    height: 393
+    height: 392
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -428,19 +428,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/Player
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Player
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\ahmet\Desktop\Uni\MRE\Github\UNET-Paint\UNETPaint
+  m_LastProjectPath: C:\Users\ahmet\Desktop\Uni\MRE\Github\meetingSharks\UNET-Paint-master\UNETPaint
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3c280000
-    m_LastClickedID: 10300
-    m_ExpandedIDs: 000000005c27000098270000a0270000b427000042280000902800004e2900006429000090a7000096a7000000ca9a3bffffff7f
+    m_SelectedIDs: a4290000
+    m_LastClickedID: 10660
+    m_ExpandedIDs: 000000005c2700009a270000b827000044280000922800000c290000542900006a29000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -468,7 +468,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005c27000098270000a0270000b427000042280000902800004e29000064290000
+    m_ExpandedIDs: 000000005c2700009a270000a2270000b827000044280000922800000c290000542900006a2900007a290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -581,12 +581,12 @@ MonoBehaviour:
     x: 0
     y: 92
     width: 356
-    height: 336
+    height: 337
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 347cf9ff
-    m_LastClickedID: -426956
-    m_ExpandedIDs: fe7ef9ffd8a7f9ff36acf9ff32bcf9ff2ce7f9ffa4f6f9ffac15faff0c37faffd28ffaff6e99faffb2a4faffa0b3faff6cd9faff7adbfaff683bfbff4280fbff3890fbff9a9afbff1aabfbffc2d8fbff62e5fbffb43dfcffbc3ffcff2c4efcffdc4ffcff206cfcfffa6dfcff4c85fcff3487fcffa29ffcffcac6fcff08d2fcff6ee5fcff92fffcff6a05fdff6614feff5e30feff7665feff2068feffca6afeff8a84feff1a87feffce8bfeffdeabfeff84bafeff9ebafeff1ebcfeffa4bffeff20ccfeffaacefeff9ed5feff2edafeffd2e0feff18edfefff002ffffe804fffff60affff6e0dffff8e12ffff6c15ffff541dffff2e2effffbc30ffffbc32ffff5439ffff2042ffff9e6bffff926dffff1075ffff887dffff0686ffff7a89ffffbe8bffff7a8efffffa9cffffeea3ffff20a7ffff62aeffff10befffff4c5ffff38d2ffffc8fbfffff4ffffff00000000283d0000383d00004e3d0000de410000ee410000144200000e4900001e490000404900007e4b00008e4b0000b04b00003c5000004c5000006e500000b85000001a6100002a6100004c61000096610000ca660000da660000fc660000466700008a6a00009a6a0000bc6a0000066b0000d66c0000e66c0000086d0000526d0000ce6d0000de6d0000006e00004a6e00008672000096720000b87200003e7700004e7700007077000022790000668000008e8000009e800000c08000000a8100009e860000bc860000e6860000de8a0000008b0000088d00003e8d00000a9400004094000010970000289700006297000098970000
+    m_SelectedIDs: 62b30000
+    m_LastClickedID: 45922
+    m_ExpandedIDs: 4820fdffae2afdff4c3afdffe43cfdfffc42fdff1643fdff626dfdff0872fdff4cabfdff4eb1fdffaceefdff5afffdff6412fefffa14feff9618feffec2bfeffd443feff7061feff2062feff9665feffc6bdfeffbcc0feff8cc9feff54ccfeff52d3feffe824ffff002cffff644cffffe664ffff8067ffff706dffff2c75ffffa67bffffac7bffffb27bffff947effffc29affffa0a7ffffc8fbffff00000000143f00004a3f0000be430000c2430000104400003053000034530000825300002c640000306400007e640000986b0000c87c0000167d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -636,14 +636,14 @@ MonoBehaviour:
     width: 828
     height: 282
   m_SceneLighting: 1
-  lastFramingTime: 11319.626496476722
+  lastFramingTime: 1328.6121918568035
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.81967854, y: -1.0340145, z: 10.625224}
+    m_Target: {x: 0.8297634, y: 0.33346915, z: 5.1666265}
     speed: 2
-    m_Value: {x: -0.81967854, y: -1.0340145, z: 10.625224}
+    m_Value: {x: 0.8297634, y: 0.33346915, z: 5.1666265}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -666,13 +666,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.0031331142, y: -0.9958372, z: 0.08296357, w: -0.037623025}
+    m_Target: {x: 0.04286702, y: 0.008051621, z: 0.00034679065, w: -0.9990483}
     speed: 2
-    m_Value: {x: -0.0031331142, y: -0.9958372, z: 0.08296357, w: -0.037623025}
+    m_Value: {x: 0.04286702, y: 0.008051621, z: 0.00034679065, w: -0.9990483}
   m_Size:
-    m_Target: 8.715168
+    m_Target: 3.6888852
     speed: 2
-    m_Value: 8.715168
+    m_Value: 3.6888852
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -782,6 +782,6 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 449
+    y: 450
     width: 356
-    height: 393
+    height: 392

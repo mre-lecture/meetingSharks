@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using HoloToolkit.Unity.InputModule;
+using System;
 
-public class DrawingInfo : NetworkBehaviour {
+public class DrawingInfo : NetworkBehaviour, IInputClickHandler {
+
+    public GameObject drawingSettings;
 
     [SyncVar]
     public int id;
@@ -15,9 +19,14 @@ public class DrawingInfo : NetworkBehaviour {
     [SyncVar(hook = "OnWidth")]
     public float width;
     [SyncVar]
-    public bool drawMesh;
-    [SyncVar]
     public string username;
+    [SyncVar]
+    public string drawingObjectName;
+
+    private void Start()
+    {
+        drawingSettings = GameObject.Find("DrawingSettings");
+    }
 
     private void OnColor(Color newColor)
     {
@@ -30,4 +39,8 @@ public class DrawingInfo : NetworkBehaviour {
         gameObject.GetComponent<TrailRenderer>().endWidth = newWidth;
     }
 
+    public void OnInputClicked(InputClickedEventData eventData)
+    {
+        drawingSettings.GetComponent<DrawingSettings>().StartMoving(gameObject);
+    }
 }
