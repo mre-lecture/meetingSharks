@@ -19,6 +19,7 @@ public class PlayerInfo : NetworkBehaviour {
         if(isLocalPlayer) {
             username = "User" + Random.Range(0, 1000000);
             CmdChangeUsername(username);
+            gameObject.tag = "localPlayer";
         }
         AddUsernameToUI();
     }
@@ -51,11 +52,20 @@ public class PlayerInfo : NetworkBehaviour {
         usernameText = usernameSlotInstance.GetComponent<Text>();
         usernameText.text = username;
         usernameSlotInstance.transform.SetParent(usernamelistPanel.transform);
+        usernameSlotInstance.transform.localScale = new Vector3(1, 1, 1);
+        usernameSlotInstance.transform.localPosition = new Vector3(usernameSlotInstance.transform.localPosition.x, usernameSlotInstance.transform.localPosition.y, 0);
     }
 
     private void OnDestroy()
     {
         Destroy(usernameSlotInstance);
     }
+
+    /*
+    public override void OnDeserialize(NetworkReader reader, bool initialState)
+    {
+        base.OnDeserialize(reader, initialState);
+    }
+    */
 
 }

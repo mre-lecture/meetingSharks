@@ -1,38 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class DrawingSettings : NetworkBehaviour {
+public class DrawingSettings : MonoBehaviour {
 
     private GameObject localPlayer;
 
     private void Start()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players)
+    }
+
+    public void SetDrawingWidth(string width)
+    {
+        float parsedWidth;
+        if (float.TryParse(width, out parsedWidth))
         {
-            if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+            if (localPlayer != null)
             {
-                localPlayer = player;
+                localPlayer.GetComponent<DrawingManager>().width = parsedWidth;
+
             }
         }
     }
 
-    public void SetDrawingWidth(float width)
+    public void SetDrawingDistance(string distance)
     {
-        if (localPlayer != null)
+        float parsedDistance;
+        if (float.TryParse(distance, out parsedDistance))
         {
-            localPlayer.GetComponent<DrawingManager>().width = width;
+            localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+            if (localPlayer != null)
+            {
+                localPlayer.GetComponent<DrawingManager>().drawingDistance = parsedDistance;
+            }
         }
     }
 
-    public void SetDrawingDistance(float distance)
+    public void OnDrawMesh(bool drawMesh)
     {
-        if(localPlayer != null)
-        {
-            localPlayer.GetComponent<DrawingManager>().drawingDistance = distance;
-        }
+        localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+        localPlayer.GetComponent<DrawingManager>().drawMesh = drawMesh;
+    }
+
+    public void OnDelete()
+    {
+        localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+        localPlayer.GetComponent<DrawingManager>().DeleteDrawings();
     }
 
 }
