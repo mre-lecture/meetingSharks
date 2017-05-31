@@ -8,19 +8,19 @@ public class DrawingSettings : MonoBehaviour {
     public GameObject toMoveObject;
     public string mode;
     public bool startMoving;
-    public bool listenOnClick;
     private Vector3 lastCursorPos;
     private GameObject cursor;
     
     private GameObject localPlayer;
     private List<string> drawingObjectnames;
+    private CustomInputManager customInputManager;
 
     private void Start()
     {
         mode = "drawing";
         cursor = GameObject.Find("Cursor");
-        listenOnClick = true;
         InitDrawingObjectsDropDown();
+        customInputManager = GameObject.Find("DrawingSettings").GetComponent<CustomInputManager>();
     }
 
     private void Update()
@@ -30,10 +30,11 @@ public class DrawingSettings : MonoBehaviour {
             Vector3 currCursorPos = new Vector3(cursor.transform.position.x, cursor.transform.position.y, cursor.transform.position.z);
             float x = (currCursorPos.x - lastCursorPos.x) + toMoveObject.transform.position.x;
             float y = (currCursorPos.y - lastCursorPos.y) + toMoveObject.transform.position.y;
-            float z = toMoveObject.transform.position.z;
-
+            float z = (currCursorPos.z - lastCursorPos.z) + toMoveObject.transform.position.z;
             localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+
             localPlayer.GetComponent<DrawingManager>().MoveDrawingTo(toMoveObject.GetComponent<DrawingInfo>().id, new Vector3(x, y, z));
+            localPlayer.GetComponent<DrawingManager>().RotateDrawing(toMoveObject.GetComponent<DrawingInfo>().id, Camera.main.transform.rotation);
             lastCursorPos = currCursorPos;
         }
     }
@@ -108,35 +109,23 @@ public class DrawingSettings : MonoBehaviour {
 
     public void StartMoving(GameObject toMoveObject)
     {
-        if (listenOnClick)
+        if (toMoveObject)
         {
-            if (this.toMoveObject == false)
+            this.toMoveObject = toMoveObject;
+            if (startMoving)
             {
-                this.toMoveObject = toMoveObject;
+                startMoving = false;
+                toMoveObject = null;
             }
-
-            if (toMoveObject)
+            else
             {
-                if (toMoveObject.GetComponent<DrawingInfo>().id != this.toMoveObject.GetComponent<DrawingInfo>().id)
+                if (mode == "moving")
                 {
-                    this.toMoveObject = toMoveObject;
-                }
-                if (startMoving)
-                {
-                    startMoving = false;
-                    toMoveObject = null;
-                }
-                else
-                {
-                    if (mode == "moving")
-                    {
-                        lastCursorPos = new Vector3(cursor.transform.position.x, cursor.transform.position.y, cursor.transform.position.z);
-                        startMoving = true;
-                    }
+                    lastCursorPos = new Vector3(cursor.transform.position.x, cursor.transform.position.y, cursor.transform.position.z);
+                    startMoving = true;
                 }
             }
         }
-        listenOnClick = true;
     }
 
 }

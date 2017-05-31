@@ -78,7 +78,7 @@ TrailRenderer:
   m_Time: Infinity
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -124,7 +124,7 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
 --- !u!114 &114035939577773442
 MonoBehaviour:
@@ -137,12 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb689b5db72fdf4ab49d81457360eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawingSettings: {fileID: 0}
   id: 0
   lastPos: {x: 0, y: 0, z: 0}
   points: []
   color: {r: 0, g: 0, b: 0, a: 0}
   width: 0
-  drawMesh: 0
   username: 
   drawingObjectName: 
 --- !u!114 &114869516634607704

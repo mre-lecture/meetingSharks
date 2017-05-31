@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 16390417}
   - component: {fileID: 16390416}
   - component: {fileID: 16390415}
+  - component: {fileID: 16390418}
   m_Layer: 5
   m_Name: DrawButton
   m_TagString: Untagged
@@ -132,7 +133,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16390413}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -142,7 +143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 0}
+  m_AnchoredPosition: {x: 24.99959, y: -0.00019609928}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16390415
@@ -216,8 +217,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 04ba4152ef328a4449221f1be188ffb1, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -230,6 +231,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16390413}
+--- !u!114 &16390418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16390413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &23841153
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +309,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Select
 --- !u!222 &23841156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -605,7 +617,6 @@ MonoBehaviour:
   toMoveObject: {fileID: 0}
   mode: 
   startMoving: 0
-  listenOnClick: 0
 --- !u!114 &412846867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a25407e19a30a499e1b2a6528446f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeOnClick: 0
 --- !u!4 &412846868
 Transform:
   m_ObjectHideFlags: 0
@@ -883,6 +895,7 @@ GameObject:
   - component: {fileID: 746442868}
   - component: {fileID: 746442867}
   - component: {fileID: 746442866}
+  - component: {fileID: 746442869}
   m_Layer: 5
   m_Name: MoveButton
   m_TagString: Untagged
@@ -980,8 +993,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8d384fb1ea4d35a41ae38c9e7fc6ce5d, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -994,6 +1007,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 746442864}
+--- !u!114 &746442869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 746442864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802338582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +1085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 1
 --- !u!222 &802338585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1506,6 +1530,7 @@ GameObject:
   - component: {fileID: 1251003142}
   - component: {fileID: 1251003141}
   - component: {fileID: 1251003140}
+  - component: {fileID: 1251003143}
   m_Layer: 5
   m_Name: DrawingObjectsDropdown
   m_TagString: Untagged
@@ -1627,6 +1652,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1251003138}
+--- !u!114 &1251003143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251003138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1258151653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,7 +1730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Draw
 --- !u!222 &1258151656
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1969,6 +2005,7 @@ GameObject:
   - component: {fileID: 1555166477}
   - component: {fileID: 1555166476}
   - component: {fileID: 1555166475}
+  - component: {fileID: 1555166478}
   m_Layer: 5
   m_Name: DrawingDistanceInputField
   m_TagString: Untagged
@@ -2066,7 +2103,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 10
+  m_Text: 1
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -2103,6 +2140,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1555166473}
+--- !u!114 &1555166478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1555166473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1567113573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,6 +2508,7 @@ GameObject:
   - component: {fileID: 1734380107}
   - component: {fileID: 1734380106}
   - component: {fileID: 1734380105}
+  - component: {fileID: 1734380108}
   m_Layer: 5
   m_Name: DeleteButton
   m_TagString: Untagged
@@ -2571,6 +2620,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1734380103}
+--- !u!114 &1734380108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734380103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1746445658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2737,7 @@ GameObject:
   - component: {fileID: 1761712051}
   - component: {fileID: 1761712050}
   - component: {fileID: 1761712049}
+  - component: {fileID: 1761712052}
   m_Layer: 5
   m_Name: WidthInputField
   m_TagString: Untagged
@@ -2728,7 +2789,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.01
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -2811,6 +2872,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1761712047}
+--- !u!114 &1761712052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1761712047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776695005
 GameObject:
   m_ObjectHideFlags: 0

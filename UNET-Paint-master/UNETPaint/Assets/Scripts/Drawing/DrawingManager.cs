@@ -27,9 +27,9 @@ public class DrawingManager : NetworkBehaviour
         cursor = GameObject.Find("Cursor");
         drawingMeshes = new List<GameObject>();
         mode = "drawing";
-        drawingDistance = 10;
+        drawingDistance = 1;
         color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
-        width = 0.1f;
+        width = 0.01f;
     }
 	
 	void Update () {
@@ -148,7 +148,7 @@ public class DrawingManager : NetworkBehaviour
         if (drawing != null)
         {
             DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
-            if (Vector3.Distance(drawingInfo.lastPos, point) > 0.1)
+            if (Vector3.Distance(drawingInfo.lastPos, point) > 0.01)
             {
                 drawing.transform.position = point;
                 RpcDrawToPoint(id, point, color);
@@ -275,6 +275,24 @@ public class DrawingManager : NetworkBehaviour
     {
         GameObject drawing = GetDrawingById(id);
         drawing.transform.position = position;
+    }
+
+    public void RotateDrawing(int id, Quaternion rotation)
+    {
+        CmdRotateDrawing(id, rotation);
+    }
+
+    [Command]
+    private void CmdRotateDrawing(int id, Quaternion rotation)
+    {
+        RpcRotateDrawing(id, rotation);
+    }
+
+    [ClientRpc]
+    private void RpcRotateDrawing(int id, Quaternion rotation)
+    {
+        GameObject drawing = GetDrawingById(id);
+        drawing.transform.rotation = rotation;
     }
 
     public override void OnDeserialize(NetworkReader reader, bool initialState)

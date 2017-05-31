@@ -342,12 +342,6 @@ namespace HoloToolkit.Unity.InputModule
 
         public void RaiseInputClicked(IInputSource source, uint sourceId, int tapCount)
         {
-            if(drawSettings)
-            {
-                drawSettings.GetComponent<CustomInputManager>().OnTap();
-            }
-
-
             // Create input event
             sourceClickedEventData.Initialize(source, sourceId, tapCount);
 
@@ -359,6 +353,11 @@ namespace HoloToolkit.Unity.InputModule
             {
                 PointerEventData unityUIPointerEvent = GazeManager.Instance.UnityUIPointerEvent;
                 HandleEvent(unityUIPointerEvent, ExecuteEvents.pointerClickHandler);
+            }
+
+            if (drawSettings)
+            {
+                drawSettings.GetComponent<CustomInputManager>().OnTap();
             }
         }
 
