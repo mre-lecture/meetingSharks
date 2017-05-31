@@ -8,6 +8,7 @@ TagManager:
   - DrawingSettings
   - DrawingMesh
   - localPlayer
+  - SelectionBox
   layers:
   - Default
   - TransparentFX

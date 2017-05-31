@@ -61,11 +61,4 @@ public class PlayerInfo : NetworkBehaviour {
         Destroy(usernameSlotInstance);
     }
 
-    /*
-    public override void OnDeserialize(NetworkReader reader, bool initialState)
-    {
-        base.OnDeserialize(reader, initialState);
-    }
-    */
-
 }

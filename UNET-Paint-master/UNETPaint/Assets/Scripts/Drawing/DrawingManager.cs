@@ -295,6 +295,32 @@ public class DrawingManager : NetworkBehaviour
         drawing.transform.rotation = rotation;
     }
 
+    public void AddToScaleDrawing(int id, float distance)
+    {
+        CmdAddToScaleDrawing(id, distance);
+    }
+
+    [Command]
+    private void CmdAddToScaleDrawing(int id, float distance)
+    {
+        GameObject drawing = GetDrawingById(id);
+        float scaleX = distance / drawing.transform.localScale.x;
+        float scaleY = distance / drawing.transform.localScale.y;
+        float scaleZ = distance / drawing.transform.localScale.z;
+        Vector3 scaling = new Vector3(scaleX, scaleY, scaleZ);
+        RpcAddToScaleDrawing(id, scaling);
+    }
+
+    [ClientRpc]
+    private void RpcAddToScaleDrawing(int id, Vector3 scaling)
+    {
+        GameObject drawing = GetDrawingById(id);
+        float scaleX = drawing.transform.localScale.x * scaling.x;
+        float scaleY = drawing.transform.localScale.y * scaling.y;
+        float scaleZ = drawing.transform.localScale.z * scaling.z;
+        drawing.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+    }
+
     public override void OnDeserialize(NetworkReader reader, bool initialState)
     {
         base.OnDeserialize(reader, initialState);

@@ -25,18 +25,7 @@ public class DrawingSettings : MonoBehaviour {
 
     private void Update()
     {
-        if (startMoving && toMoveObject)
-        {
-            Vector3 currCursorPos = new Vector3(cursor.transform.position.x, cursor.transform.position.y, cursor.transform.position.z);
-            float x = (currCursorPos.x - lastCursorPos.x) + toMoveObject.transform.position.x;
-            float y = (currCursorPos.y - lastCursorPos.y) + toMoveObject.transform.position.y;
-            float z = (currCursorPos.z - lastCursorPos.z) + toMoveObject.transform.position.z;
-            localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
-
-            localPlayer.GetComponent<DrawingManager>().MoveDrawingTo(toMoveObject.GetComponent<DrawingInfo>().id, new Vector3(x, y, z));
-            localPlayer.GetComponent<DrawingManager>().RotateDrawing(toMoveObject.GetComponent<DrawingInfo>().id, Camera.main.transform.rotation);
-            lastCursorPos = currCursorPos;
-        }
+        
     }
 
     private void InitDrawingObjectsDropDown()
@@ -95,36 +84,38 @@ public class DrawingSettings : MonoBehaviour {
 
     public void SetDrawingMode()
     {
-        mode = "drawing";
+        SetMode("drawing");
+    }
+
+    public void SetScaleMode()
+    {
+        SetMode("scaling");
+    }
+
+    public void SetMoveMode()
+    {
+        SetMode("moving");
+    }
+
+    public void SetRotateMode()
+    {
+        SetMode("rotating");
+    }
+
+    private void SetMode(string modeString)
+    {
+        DestroyAllSelectionBoxes();
+        mode = modeString;
         localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
         localPlayer.GetComponent<DrawingManager>().mode = mode;
     }
 
-    public void SetMovingMode()
+    private void DestroyAllSelectionBoxes()
     {
-        mode = "moving";
-        localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
-        localPlayer.GetComponent<DrawingManager>().mode = mode;
-    }
-
-    public void StartMoving(GameObject toMoveObject)
-    {
-        if (toMoveObject)
+        GameObject[] selectionBoxes = GameObject.FindGameObjectsWithTag("SelectionBox");
+        foreach(GameObject selectionBox in selectionBoxes)
         {
-            this.toMoveObject = toMoveObject;
-            if (startMoving)
-            {
-                startMoving = false;
-                toMoveObject = null;
-            }
-            else
-            {
-                if (mode == "moving")
-                {
-                    lastCursorPos = new Vector3(cursor.transform.position.x, cursor.transform.position.y, cursor.transform.position.z);
-                    startMoving = true;
-                }
-            }
+            Destroy(selectionBox);
         }
     }
 

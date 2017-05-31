@@ -1,4 +1,0 @@
-C:\Users\ahmet\Desktop\Uni\MRE\Github\meetingSharks\UNET-Paint-master\UNETPaint\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
-C:\Users\ahmet\Desktop\Uni\MRE\Github\meetingSharks\UNET-Paint-master\UNETPaint\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
-C:\Users\ahmet\Desktop\Uni\MRE\Github\meetingSharks\UNET-Paint-master\UNETPaint\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
-C:\Users\ahmet\Desktop\Uni\MRE\Github\meetingSharks\UNET-Paint-master\UNETPaint\App\UNETPaint\UNETPaint.csproj;x86

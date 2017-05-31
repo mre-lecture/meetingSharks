@@ -6,22 +6,11 @@ using UnityEngine.Networking;
 
 public class CustomNetworkManagerHUD : MonoBehaviour {
 
-    public GameObject ipAddressObject;
-    public UnityEngine.TouchScreenKeyboard keyboard;
-
     void Start () {
     }
 
     private void Update()
     {
-        if (TouchScreenKeyboard.visible == false && keyboard != null)
-        {
-            if (keyboard.done == true)
-            {
-                //keyboard.text;
-                keyboard = null;
-            }
-        }
     }
 
     public void StartHost()
@@ -36,7 +25,6 @@ public class CustomNetworkManagerHUD : MonoBehaviour {
 
     public void SetNetworkAddress(string ip)
     {
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false);
         NetworkManager.singleton.networkAddress = ip;
     }
 }

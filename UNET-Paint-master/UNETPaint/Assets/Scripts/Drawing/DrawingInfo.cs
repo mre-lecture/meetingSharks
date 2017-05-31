@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using HoloToolkit.Unity.InputModule;
 using System;
 
-public class DrawingInfo : NetworkBehaviour, IInputClickHandler {
+public class DrawingInfo : NetworkBehaviour {
 
     public GameObject drawingSettings;
 
@@ -39,8 +38,4 @@ public class DrawingInfo : NetworkBehaviour, IInputClickHandler {
         gameObject.GetComponent<TrailRenderer>().endWidth = newWidth;
     }
 
-    public void OnInputClicked(InputClickedEventData eventData)
-    {
-        drawingSettings.GetComponent<DrawingSettings>().StartMoving(gameObject);
-    }
 }

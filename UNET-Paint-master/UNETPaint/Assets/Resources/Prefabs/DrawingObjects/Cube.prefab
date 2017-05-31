@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33414493582625878}
   - component: {fileID: 65903375933886372}
   - component: {fileID: 23977288824299348}
+  - component: {fileID: 114287893424969636}
   m_Layer: 0
   m_Name: Cube
   m_TagString: DrawingMesh
@@ -93,3 +94,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114287893424969636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320399954053580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d5e9ece3a6c384789e7f41ce1b333b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
