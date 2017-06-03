@@ -6,30 +6,31 @@ using System;
 
 public class DrawingManager : NetworkBehaviour
 {
-
-    private GameObject cursor;
-    private int thisDrawingId = 0;
-    private Plane objPlane;
-    private List<GameObject> drawingMeshes;
     public string mode;
-    
     public float drawingDistance;
-    public Color color;
     public float width;
-    public string drawingObjectName;
 
     public bool inputDown;
     public bool inputUp;
     public bool pressing;
 
+    private GameObject cursor;
+    private int thisDrawingId;
+    private Plane objPlane;
+    private List<GameObject> drawingMeshes;
+
+    public Color color;
+    public string drawingObjectName;
+
 	void Start () {
         objPlane = new Plane(GetNormalForPlane(), GetPositionForPlane());
         cursor = GameObject.Find("Cursor");
         drawingMeshes = new List<GameObject>();
-        mode = "drawing";
-        drawingDistance = 1;
         color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
+        drawingDistance = 1;
+        mode = "drawing";
         width = 0.01f;
+        thisDrawingId = 0;
     }
 	
 	void Update () {
@@ -295,35 +296,34 @@ public class DrawingManager : NetworkBehaviour
         drawing.transform.rotation = rotation;
     }
 
-    public void AddToScaleDrawing(int id, float distance)
+    public void AddToScaleDrawing(int id, Vector3 scaling)
     {
-        CmdAddToScaleDrawing(id, distance);
+        CmdAddToScaleDrawing(id, scaling);
     }
 
     [Command]
-    private void CmdAddToScaleDrawing(int id, float distance)
+    private void CmdAddToScaleDrawing(int id, Vector3 scaling)
     {
         GameObject drawing = GetDrawingById(id);
-        float scaleX = distance / drawing.transform.localScale.x;
-        float scaleY = distance / drawing.transform.localScale.y;
-        float scaleZ = distance / drawing.transform.localScale.z;
-        Vector3 scaling = new Vector3(scaleX, scaleY, scaleZ);
-        RpcAddToScaleDrawing(id, scaling);
+        float scaleX = drawing.transform.localScale.x + scaling.x;
+        float scaleY = drawing.transform.localScale.y + scaling.y;
+        float scaleZ = drawing.transform.localScale.z + scaling.z;
+        Vector3 scalingVector = new Vector3(scaleX, scaleY, scaleZ);
+        RpcAddToScaleDrawing(id, scalingVector);
     }
 
     [ClientRpc]
     private void RpcAddToScaleDrawing(int id, Vector3 scaling)
     {
         GameObject drawing = GetDrawingById(id);
-        float scaleX = drawing.transform.localScale.x * scaling.x;
-        float scaleY = drawing.transform.localScale.y * scaling.y;
-        float scaleZ = drawing.transform.localScale.z * scaling.z;
-        drawing.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+        drawing.transform.localScale = scaling;
     }
-
+    
+    /*
     public override void OnDeserialize(NetworkReader reader, bool initialState)
     {
+        reader.SeekZero();
         base.OnDeserialize(reader, initialState);
     }
-
+    */
 }

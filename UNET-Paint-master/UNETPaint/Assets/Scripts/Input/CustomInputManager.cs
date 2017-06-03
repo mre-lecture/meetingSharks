@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class CustomInputManager : MonoBehaviour {
 
-    private GameObject drawingSettingsObject;
-    public bool executeOnClick;
-
-    private void Start()
-    {
-        executeOnClick = true;
-        drawingSettingsObject = GameObject.Find("DrawingSettings");
-    }
+    public static bool executeOnClick = true;
 
     public void OnTap()
     {
         if (executeOnClick)
         {
-            GameObject localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
-            localPlayer.GetComponent<DrawingManager>().inputDown = true;
-
-            DrawingSettings drawingSettings = drawingSettingsObject.GetComponent<DrawingSettings>();
-            
+            DrawingManager dm = GameObject.FindGameObjectWithTag("localPlayer").GetComponent<DrawingManager>();
+            dm.inputDown = true;
         }
         executeOnClick = true;
     }
