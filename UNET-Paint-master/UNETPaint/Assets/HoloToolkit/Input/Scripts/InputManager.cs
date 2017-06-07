@@ -14,6 +14,9 @@ namespace HoloToolkit.Unity.InputModule
     /// </summary>
     public class InputManager : Singleton<InputManager>
     {
+
+        public GameObject drawSettings;
+
         /// <summary>
         /// To tap on a hologram even when not focused on,
         /// set OverrideFocusedObject to desired game object.
@@ -350,6 +353,11 @@ namespace HoloToolkit.Unity.InputModule
             {
                 PointerEventData unityUIPointerEvent = GazeManager.Instance.UnityUIPointerEvent;
                 HandleEvent(unityUIPointerEvent, ExecuteEvents.pointerClickHandler);
+            }
+
+            if (drawSettings)
+            {
+                drawSettings.GetComponent<CustomInputManager>().OnTap();
             }
         }
 

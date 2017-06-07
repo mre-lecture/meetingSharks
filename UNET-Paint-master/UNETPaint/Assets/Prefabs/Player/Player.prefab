@@ -72,6 +72,11 @@ MonoBehaviour:
   drawingDistance: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   width: 0
+  inputDown: 0
+  inputUp: 0
+  pressing: 0
+  cursor: {fileID: 0}
+  drawMesh: 0
 --- !u!114 &114839415872342024
 MonoBehaviour:
   m_ObjectHideFlags: 1

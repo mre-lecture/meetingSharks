@@ -19,6 +19,7 @@ public class PlayerInfo : NetworkBehaviour {
         if(isLocalPlayer) {
             username = "User" + Random.Range(0, 1000000);
             CmdChangeUsername(username);
+            gameObject.tag = "localPlayer";
         }
         AddUsernameToUI();
     }

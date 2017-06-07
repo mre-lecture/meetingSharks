@@ -13,6 +13,7 @@ Data\level1
 Data\level1.resS
 Data\managedAssemblies.txt
 Data\nativePlugins.txt
+Data\resources.assets
 Data\Resources\unity default resources
 Data\Resources\unity_builtin_extra
 Data\sharedassets0.assets
@@ -25,3 +26,4 @@ Properties\Default.rd.xml
 Resource.res
 SharingClient.dll
 SpatialUnderstanding.dll
+SpatialUnderstanding.pdb

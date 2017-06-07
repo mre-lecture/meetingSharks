@@ -2,82 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using HoloToolkit.Unity.InputModule;
 using System;
 
-public class DrawingManager : NetworkBehaviour, IInputClickHandler
+public class DrawingManager : NetworkBehaviour
 {
-
-    public GameObject drawingPrefab;
-
-    int thisDrawingId = 0;
-    Vector3 startPos;
-    Plane objPlane;
-
+    public string mode;
     public float drawingDistance;
-    public Color color;
     public float width;
 
     public bool inputDown;
     public bool inputUp;
     public bool pressing;
 
+    private GameObject cursor;
+    private int thisDrawingId;
+    private Plane objPlane;
+    private List<GameObject> drawingMeshes;
+
+    public Color color;
+    public string drawingObjectName;
+
 	void Start () {
         objPlane = new Plane(GetNormalForPlane(), GetPositionForPlane());
-        GameObject[] drawings = GameObject.FindGameObjectsWithTag("Drawing");
-        foreach(GameObject drawing in drawings)
-        {
-            DrawingInfo identity = drawing.GetComponent<DrawingInfo>();
-            if(isLocalPlayer)
-                CmdGetPointsForDrawing(identity.id);
-        }
-
-        drawingDistance = 10;
+        cursor = GameObject.Find("Cursor");
+        drawingMeshes = new List<GameObject>();
         color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
-        width = 0.1f;
+        drawingDistance = 1;
+        mode = "drawing";
+        width = 0.01f;
+        thisDrawingId = 0;
     }
 	
 	void Update () {
-		if(Input.GetMouseButtonDown(0) || (!pressing && inputDown))
+        if ((!pressing && inputDown))
         {
             inputDown = false;
             pressing = true;
-            if (isLocalPlayer)
+            if (isLocalPlayer && mode == "drawing")
             {
                 objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
                 thisDrawingId = GetLatestDrawingId() + 1;
-                Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray mRay = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(cursor.transform.localPosition));
                 float rayDistance;
                 if (objPlane.Raycast(mRay, out rayDistance))
                 {
-                    startPos = mRay.GetPoint(rayDistance);
+                    Vector3 lastPos = mRay.GetPoint(rayDistance);
+                    GameObject localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+                    PlayerInfo playerInfo = localPlayer.GetComponent<PlayerInfo>();
+                    CmdInstantiateDrawing(thisDrawingId, lastPos, color, width, playerInfo.username, drawingObjectName);
                 }
-
-                CmdInstantiateDrawing(thisDrawingId, color, width);
+                
             }
-        } else if(Input.GetMouseButton(0) || (pressing && !inputDown))
+        } else if((pressing && !inputDown))
         {
             inputDown = false;
-            if (isLocalPlayer)
+            if (isLocalPlayer && mode == "drawing")
             {
                 objPlane.SetNormalAndPosition(GetNormalForPlane(), GetPositionForPlane());
-                Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray mRay = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(cursor.transform.localPosition));
                 float rayDistance;
                 if (objPlane.Raycast(mRay, out rayDistance))
                 {
                     Vector3 point = mRay.GetPoint(rayDistance);
-                    CmdDrawToPoint(thisDrawingId, point);
+                    CmdDrawToPoint(thisDrawingId, point, color);
                 }
             }
-        } else if(Input.GetMouseButtonUp(0) || (inputDown && pressing))
+        } else if((inputDown && pressing))
         {
             pressing = false;
             inputDown = false;
-            if (isLocalPlayer)
+            if (isLocalPlayer && mode == "drawing")
             {
-                if (Vector3.Distance(GetDrawingById(thisDrawingId).transform.position, startPos) < 0.1)
+                GameObject drawing = GetDrawingById(thisDrawingId);
+                if (drawing)
                 {
-                    CmdDestroyDrawing(thisDrawingId);
+                    if (drawing.GetComponent<DrawingInfo>().points.Count <= 1)
+                    {
+                        CmdDestroyDrawing(thisDrawingId);
+                    }
+                    else
+                    {
+                        CmdGroupMeshes(thisDrawingId);
+                    }
                 }
             }
         }
@@ -85,11 +91,16 @@ public class DrawingManager : NetworkBehaviour, IInputClickHandler
 
     private int GetLatestDrawingId()
     {
+        return GetLatestIDWithTag("Drawing");
+    }
+
+    private int GetLatestIDWithTag(string tag)
+    {
         int id = 0;
-        GameObject[] drawings = GameObject.FindGameObjectsWithTag("Drawing");
-        foreach(GameObject drawing in drawings)
+        GameObject[] drawings = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject drawing in drawings)
         {
-            if(drawing.GetComponent<DrawingInfo>().id > id)
+            if (drawing.GetComponent<DrawingInfo>().id > id)
             {
                 id = drawing.GetComponent<DrawingInfo>().id;
             }
@@ -112,35 +123,98 @@ public class DrawingManager : NetworkBehaviour, IInputClickHandler
     }
 
     [Command]
-    void CmdInstantiateDrawing(int id, Color color, float width)
+    void CmdInstantiateDrawing(int id, Vector3 lastPos, Color color, float width, string username, string drawingObjectName)
     {
-        GameObject drawing = (GameObject)Instantiate(drawingPrefab, this.transform.position,
+        GameObject drawing = (GameObject)Instantiate(Resources.Load("Prefabs/Drawing"), this.transform.position,
                 Quaternion.identity);
         DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
+        TrailRenderer drawingTrailRenderer = drawing.GetComponent<TrailRenderer>();
         drawingInfo.id = id;
+        drawingInfo.lastPos = lastPos;
         drawingInfo.color = color;
         drawingInfo.width = width;
-        drawing.GetComponent<TrailRenderer>().material.color = color;
-        drawing.GetComponent<TrailRenderer>().startWidth = width;
-        drawing.GetComponent<TrailRenderer>().endWidth = width;
-        if (isServer)
+        drawingTrailRenderer.material.color = color;
+        drawingTrailRenderer.startWidth = width;
+        drawingTrailRenderer.endWidth = width;
+        drawingInfo.username = username;
+        drawingInfo.drawingObjectName = drawingObjectName;
+
+        NetworkServer.Spawn(drawing);
+    }
+
+    [Command]
+    void CmdDrawToPoint(int id, Vector3 point, Color color)
+    {
+        GameObject drawing = GetDrawingById(id);
+        if (drawing != null)
         {
-            NetworkServer.Spawn(drawing);
-        } else
+            DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
+            if (Vector3.Distance(drawingInfo.lastPos, point) > 0.01)
+            {
+                drawing.transform.position = point;
+                RpcDrawToPoint(id, point, color);
+            }
+        }
+    }
+
+    [ClientRpc]
+    void RpcDrawToPoint(int id, Vector3 point, Color color)
+    {
+        GameObject drawing = GetDrawingById(id);
+        if(drawing)
         {
-            NetworkServer.SpawnWithClientAuthority(drawing, connectionToClient);
+            drawing.transform.position = point;
+            DrawingInfo drawingInfo = drawing.GetComponent<DrawingInfo>();
+            TrailRenderer drawingTrailRenderer = drawing.GetComponent<TrailRenderer>();
+            drawingInfo.points.Add(point);
+            string drawingObjectName = drawingInfo.drawingObjectName;
+
+            if (drawingObjectName == "" || drawingObjectName == "Line")
+            {
+                drawingTrailRenderer.enabled = true;
+            }
+            else
+            {
+                drawingTrailRenderer.enabled = false;
+            }
+
+            if (drawingObjectName != "" && drawingObjectName != "Line")
+            {
+                GameObject cube = (GameObject)Instantiate(Resources.Load("Prefabs/DrawingObjects/" + drawingObjectName));
+                MeshRenderer mesh = cube.GetComponent<MeshRenderer>();
+                mesh.material.color = color;
+
+                Vector3 distance = drawingInfo.lastPos - point;
+                cube.transform.localScale = new Vector3(Math.Abs(distance.x), cube.transform.localScale.y, cube.transform.localScale.z);
+                Vector3 divided = cube.transform.localScale;
+                divided.y = 0;
+                divided.z = 0;
+                divided.x = divided.x / 2f;
+                cube.transform.position = point + divided;
+                drawingMeshes.Add(cube);
+            }
+            drawingInfo.lastPos = point;
         }
     }
 
     [Command]
-    void CmdDrawToPoint(int id, Vector3 point)
+    void CmdGroupMeshes(int drawingId)
     {
-        GameObject drawing = GetDrawingById(id);
-        if(drawing != null)
+        RpcGroupMeshes(drawingId);
+    }
+
+    [ClientRpc]
+    void RpcGroupMeshes(int drawingId)
+    {
+        GameObject drawing = GetDrawingById(drawingId);
+        if (drawing)
         {
-            drawing.transform.position = point;
-            drawing.GetComponent<DrawingInfo>().points.Add(point);
+            foreach (GameObject drawingMesh in drawingMeshes)
+            {
+                drawingMesh.transform.SetParent(drawing.transform);
+            }
         }
+        drawingMeshes = new List<GameObject>();
     }
 
     [Command]
@@ -149,25 +223,7 @@ public class DrawingManager : NetworkBehaviour, IInputClickHandler
         GameObject drawing = GetDrawingById(id);
         Destroy(drawing);
     }
-
-    [Command]
-    void CmdGetPointsForDrawing(int id)
-    {
-        GameObject drawing = GetDrawingById(id);
-        List<Vector3> points = drawing.GetComponent<DrawingInfo>().points;
-        foreach (Vector3 point in points)
-        {
-            TargetInitPointsForDrawing(connectionToClient, id, point);
-        }
-    }
-
-    [TargetRpc]
-    void TargetInitPointsForDrawing(NetworkConnection target, int id, Vector3 point)
-    {
-        GameObject drawing = GetDrawingById(id);
-        drawing.GetComponent<DrawingInfo>().points.Add(point);
-    }
-
+    
     private Vector3 GetNormalForPlane()
     {
         return Camera.main.transform.forward * -1;
@@ -184,8 +240,90 @@ public class DrawingManager : NetworkBehaviour, IInputClickHandler
         width = drawingWidth;
     }
 
-    void IInputClickHandler.OnInputClicked(InputClickedEventData eventData)
+    public void DeleteDrawings()
     {
-        inputDown = true;
+        GameObject localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+        PlayerInfo playerInfo = localPlayer.GetComponent<PlayerInfo>();
+        CmdOnDelete(playerInfo.username);
     }
+
+    [Command]
+    public void CmdOnDelete(string username)
+    {
+        GameObject[] drawings = GameObject.FindGameObjectsWithTag("Drawing");
+        foreach (GameObject drawing in drawings)
+        {
+            if (drawing.GetComponent<DrawingInfo>().username == username)
+            {
+                Destroy(drawing);
+            }
+        }
+    }
+
+    public void MoveDrawingTo(int id, Vector3 position)
+    {
+        CmdMoveDrawingTo(id, position);
+    }
+
+    [Command]
+    private void CmdMoveDrawingTo(int id, Vector3 position)
+    {
+        RpcMoveDrawingTo(id, position);
+    }
+
+    [ClientRpc]
+    private void RpcMoveDrawingTo(int id, Vector3 position)
+    {
+        GameObject drawing = GetDrawingById(id);
+        drawing.transform.position = position;
+    }
+
+    public void RotateDrawing(int id, Quaternion rotation)
+    {
+        CmdRotateDrawing(id, rotation);
+    }
+
+    [Command]
+    private void CmdRotateDrawing(int id, Quaternion rotation)
+    {
+        RpcRotateDrawing(id, rotation);
+    }
+
+    [ClientRpc]
+    private void RpcRotateDrawing(int id, Quaternion rotation)
+    {
+        GameObject drawing = GetDrawingById(id);
+        drawing.transform.rotation = rotation;
+    }
+
+    public void AddToScaleDrawing(int id, Vector3 scaling)
+    {
+        CmdAddToScaleDrawing(id, scaling);
+    }
+
+    [Command]
+    private void CmdAddToScaleDrawing(int id, Vector3 scaling)
+    {
+        GameObject drawing = GetDrawingById(id);
+        float scaleX = drawing.transform.localScale.x + scaling.x;
+        float scaleY = drawing.transform.localScale.y + scaling.y;
+        float scaleZ = drawing.transform.localScale.z + scaling.z;
+        Vector3 scalingVector = new Vector3(scaleX, scaleY, scaleZ);
+        RpcAddToScaleDrawing(id, scalingVector);
+    }
+
+    [ClientRpc]
+    private void RpcAddToScaleDrawing(int id, Vector3 scaling)
+    {
+        GameObject drawing = GetDrawingById(id);
+        drawing.transform.localScale = scaling;
+    }
+    
+    /*
+    public override void OnDeserialize(NetworkReader reader, bool initialState)
+    {
+        reader.SeekZero();
+        base.OnDeserialize(reader, initialState);
+    }
+    */
 }

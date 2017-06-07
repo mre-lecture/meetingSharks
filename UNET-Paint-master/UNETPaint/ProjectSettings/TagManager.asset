@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Drawing
   - DrawingSettings
+  - DrawingMesh
+  - localPlayer
+  - SelectionBox
+  - Keyboard
   layers:
   - Default
   - TransparentFX

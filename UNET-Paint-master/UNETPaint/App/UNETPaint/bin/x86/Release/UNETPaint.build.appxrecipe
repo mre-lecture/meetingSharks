@@ -433,6 +433,9 @@
     <AppxPackagedFile Include="C:\Users\UgurT\HS Mannheim\7.Semester\MRE\GIT\meetingSharks\UNET-Paint-master\UNETPaint\App\UNETPaint\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\UgurT\HS Mannheim\7.Semester\MRE\GIT\meetingSharks\UNET-Paint-master\UNETPaint\App\UNETPaint\Data\resources.assets">
+      <PackagePath>Data\resources.assets</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\UgurT\HS Mannheim\7.Semester\MRE\GIT\meetingSharks\UNET-Paint-master\UNETPaint\App\UNETPaint\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
     </AppxPackagedFile>

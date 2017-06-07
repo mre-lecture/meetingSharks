@@ -2,16 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System;
 
 public class DrawingInfo : NetworkBehaviour {
 
+    public GameObject drawingSettings;
+
     [SyncVar]
     public int id;
+    [SyncVar]
+    public Vector3 lastPos;
     public List<Vector3> points;
     [SyncVar (hook = "OnColor")]
     public Color color;
     [SyncVar(hook = "OnWidth")]
     public float width;
+    [SyncVar]
+    public string username;
+    [SyncVar]
+    public string drawingObjectName;
+
+    private void Start()
+    {
+        drawingSettings = GameObject.Find("DrawingSettings");
+    }
 
     private void OnColor(Color newColor)
     {
@@ -23,4 +37,5 @@ public class DrawingInfo : NetworkBehaviour {
         gameObject.GetComponent<TrailRenderer>().startWidth = newWidth;
         gameObject.GetComponent<TrailRenderer>().endWidth = newWidth;
     }
+
 }

@@ -1,37 +1,106 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.UI;
 
-public class DrawingSettings : NetworkBehaviour {
+public class DrawingSettings : MonoBehaviour {
 
+    public GameObject toMoveObject;
+    public bool startMoving;
+    
     private GameObject localPlayer;
+    private List<string> drawingObjectnames;
 
     private void Start()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players)
+        InitDrawingObjectsDropDown();
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    private void InitDrawingObjectsDropDown()
+    {
+        drawingObjectnames = new List<string>();
+        drawingObjectnames.Add("Line");
+        Object[] drawingObjects = (Object[]) Resources.LoadAll("Prefabs/DrawingObjects", typeof(GameObject));
+        GameObject dropdownGameObject = GameObject.Find("DrawingObjectsDropdown");
+        foreach(Object drawingObject in drawingObjects)
         {
-            if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
-            {
-                localPlayer = player;
-            }
+            drawingObjectnames.Add(drawingObject.name);
+        }
+        Dropdown dropdown = dropdownGameObject.GetComponent<Dropdown>();
+        dropdown.AddOptions(drawingObjectnames);
+    }
+
+    public void SetDrawingWidth(string width)
+    {
+        float parsedWidth;
+        if (float.TryParse(width, out parsedWidth))
+        {
+            localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+            localPlayer.GetComponent<DrawingManager>().width = parsedWidth;
         }
     }
 
-    public void SetDrawingWidth(float width)
+    public void SetDrawingDistance(string distance)
     {
-        if (localPlayer != null)
+        float parsedDistance;
+        if (float.TryParse(distance, out parsedDistance))
         {
-            localPlayer.GetComponent<DrawingManager>().width = width;
+            localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+            localPlayer.GetComponent<DrawingManager>().drawingDistance = parsedDistance;
         }
     }
 
-    public void SetDrawingDistance(float distance)
+    public void OnDrawingObjectSelect(int value)
     {
-        if(localPlayer != null)
+        string selectedObject = drawingObjectnames[value];
+        localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+        localPlayer.GetComponent<DrawingManager>().drawingObjectName = selectedObject;
+    }
+
+    public void OnDelete()
+    {
+        localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+        localPlayer.GetComponent<DrawingManager>().DeleteDrawings();
+    }
+
+    public void SetDrawingMode()
+    {
+        SetMode("drawing");
+    }
+
+    public void SetScaleMode()
+    {
+        SetMode("scaling");
+    }
+
+    public void SetMoveMode()
+    {
+        SetMode("moving");
+    }
+
+    public void SetRotateMode()
+    {
+        SetMode("rotating");
+    }
+
+    private void SetMode(string mode)
+    {
+        DestroyAllSelectionBoxes();
+        localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+        localPlayer.GetComponent<DrawingManager>().mode = mode;
+    }
+
+    private void DestroyAllSelectionBoxes()
+    {
+        GameObject[] selectionBoxes = GameObject.FindGameObjectsWithTag("SelectionBox");
+        foreach(GameObject selectionBox in selectionBoxes)
         {
-            localPlayer.GetComponent<DrawingManager>().drawingDistance = distance;
+            Destroy(selectionBox);
         }
     }
 
