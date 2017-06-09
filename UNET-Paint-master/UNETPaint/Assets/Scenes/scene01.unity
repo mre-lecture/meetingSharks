@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -838,7 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65f89f41a7397542a3faff6988fdba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipAddressObject: {fileID: 1602166120}
 --- !u!1 &1524848129
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +925,7 @@ GameObject:
   - component: {fileID: 1602166124}
   - component: {fileID: 1602166123}
   - component: {fileID: 1602166122}
+  - component: {fileID: 1602166125}
   m_Layer: 5
   m_Name: IPInputField
   m_TagString: Untagged
@@ -1060,6 +1060,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602166120}
+--- !u!114 &1602166125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602166120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86fe31defba13a45b1f0b52011da798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardPrefab: {fileID: 1858313952769642, guid: 18c593e913df06b45951aef0639ddd03,
+    type: 2}
 --- !u!1 &1659256669
 GameObject:
   m_ObjectHideFlags: 0
