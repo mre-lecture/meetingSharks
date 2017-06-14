@@ -10,6 +10,9 @@ namespace HoloToolkit.Unity.InputModule
     /// </summary>
     public abstract class Cursor : MonoBehaviour, ICursor
     {
+
+        public GameObject customFocusGameObject;
+
         /// <summary>
         /// Enum for current cursor state
         /// </summary>
@@ -215,7 +218,7 @@ namespace HoloToolkit.Unity.InputModule
         {
             // Register to gaze events
             gazeManager.FocusedObjectChanged += OnFocusedObjectChanged;
-
+            
             // Register the cursor as a global listener, so that it can always get input events it cares about
             InputManager.Instance.AddGlobalListener(gameObject);
 
@@ -260,6 +263,27 @@ namespace HoloToolkit.Unity.InputModule
         protected virtual void OnFocusedObjectChanged(GameObject previousObject, GameObject newObject)
         {
             TargetedObject = newObject;
+
+
+
+            if (customFocusGameObject)
+            {
+                FocusedObjectDistance focusedGo = customFocusGameObject.GetComponent<FocusedObjectDistance>();
+                if (focusedGo)
+                {
+                    if (newObject != null)
+                    {
+                        focusedGo.SetDrawingDistance(newObject);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+
+
+
             if (newObject != null)
             {
                 OnActiveModifier(newObject.GetComponent<CursorModifier>());

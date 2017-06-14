@@ -184,13 +184,13 @@ public class DrawingManager : NetworkBehaviour
                 MeshRenderer mesh = cube.GetComponent<MeshRenderer>();
                 mesh.material.color = color;
 
-                Vector3 distance = drawingInfo.lastPos - point;
-                cube.transform.localScale = new Vector3(Math.Abs(distance.x), cube.transform.localScale.y, cube.transform.localScale.z);
+                cube.transform.localScale = new Vector3(Vector3.Distance(drawingInfo.lastPos, point), cube.transform.localScale.y, cube.transform.localScale.z);
                 Vector3 divided = cube.transform.localScale;
                 divided.y = 0;
                 divided.z = 0;
                 divided.x = divided.x / 2f;
                 cube.transform.position = point + divided;
+                cube.transform.rotation = new Quaternion(cube.transform.rotation.x, Camera.main.transform.rotation.y, cube.transform.rotation.z, cube.transform.rotation.w);
                 drawingMeshes.Add(cube);
             }
             drawingInfo.lastPos = point;
