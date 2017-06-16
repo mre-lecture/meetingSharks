@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -908,6 +908,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 451260144}
+  - component: {fileID: 451260145}
   m_Layer: 5
   m_Name: DrawingDistanceTool
   m_TagString: Untagged
@@ -935,6 +936,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &451260145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 451260143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86fe31defba13a45b1f0b52011da798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardPrefab: {fileID: 1858313952769642, guid: 18c593e913df06b45951aef0639ddd03,
+    type: 2}
 --- !u!1 &500004521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,6 +2708,7 @@ GameObject:
   - component: {fileID: 1555166476}
   - component: {fileID: 1555166475}
   - component: {fileID: 1555166478}
+  - component: {fileID: 1555166479}
   m_Layer: 5
   m_Name: DrawingDistanceInputField
   m_TagString: Untagged
@@ -2839,6 +2854,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1555166479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1555166473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86fe31defba13a45b1f0b52011da798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardPrefab: {fileID: 1858313952769642, guid: 18c593e913df06b45951aef0639ddd03,
+    type: 2}
 --- !u!1 &1567113573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,6 +3676,7 @@ GameObject:
   - component: {fileID: 1761712050}
   - component: {fileID: 1761712049}
   - component: {fileID: 1761712052}
+  - component: {fileID: 1761712053}
   m_Layer: 5
   m_Name: WidthInputField
   m_TagString: Untagged
@@ -3793,6 +3822,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1337a81b2d286784485e5090f8321fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1761712053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1761712047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86fe31defba13a45b1f0b52011da798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardPrefab: {fileID: 1858313952769642, guid: 18c593e913df06b45951aef0639ddd03,
+    type: 2}
 --- !u!1 &1776695005
 GameObject:
   m_ObjectHideFlags: 0
