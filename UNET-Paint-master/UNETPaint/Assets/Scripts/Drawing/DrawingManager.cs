@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.UI;
 
 public class DrawingManager : NetworkBehaviour
 {
@@ -31,6 +32,9 @@ public class DrawingManager : NetworkBehaviour
         mode = "drawing";
         width = 0.01f;
         thisDrawingId = 0;
+        GameObject selectedColorGO = GameObject.Find("selectedColor");
+        Image selectedColorImage = selectedColorGO.GetComponent<Image>();
+        selectedColorImage.color = color;
     }
 	
 	void Update () {

@@ -36,6 +36,8 @@ namespace HoloToolkit.Examples.ColorPicker
             pixelUV.y *= texture.height;
 
             Color col = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+            
+            
             cb.Invoke(col);
         }
 
@@ -52,6 +54,27 @@ namespace HoloToolkit.Examples.ColorPicker
         public void OnInputClicked(InputClickedEventData eventData)
         {
             UpdatePickedColor(OnPickedColor);
+
+            RaycastHit hit = GazeManager.Instance.HitInfo;
+            if (hit.transform.gameObject != rendererComponent.gameObject) return;
+
+            Texture2D texture = rendererComponent.material.mainTexture as Texture2D;
+            Vector2 pixelUV = hit.textureCoord;
+            pixelUV.x *= texture.width;
+            pixelUV.y *= texture.height;
+
+            Color col = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+            SetColorForPlayer(col);
+        }
+
+        public void SetColorForPlayer(Color col)
+        {
+            GameObject localPlayer = GameObject.FindGameObjectWithTag("localPlayer");
+            if (localPlayer)
+            {
+                DrawingManager dm = localPlayer.GetComponent<DrawingManager>();
+                dm.color = col;
+            }
         }
     }
 }
