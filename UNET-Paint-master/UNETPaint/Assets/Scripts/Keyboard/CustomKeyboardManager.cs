@@ -10,21 +10,25 @@ public class CustomKeyboardManager : MonoBehaviour {
     public void KeyboardButton()
     {
         GameObject button = EventSystem.current.currentSelectedGameObject;
-        Text buttonText = button.GetComponentInChildren<Text>();
-        if (buttonText.text == "Löschen")
+        if (button)
         {
-            if (inputField.text.Length > 0)
+            Text buttonText = button.GetComponentInChildren<Text>();
+            if (buttonText.text == "Löschen")
             {
-                inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+                if (inputField.text.Length > 0)
+                {
+                    inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+                }
+            } else if(buttonText.text == "Enter")
+            {
+                Destroy(gameObject);
             }
-        } else if(buttonText.text == "Enter")
-        {
-            Destroy(gameObject);
+            else
+            {
+                inputField.text += buttonText.text;
+            }
         }
-        else
-        {
-            inputField.text += buttonText.text;
-        }
+       
     }
 
 }

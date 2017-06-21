@@ -21,6 +21,7 @@ public class ScaleHandlerClick : MonoBehaviour, IInputClickHandler
         } else
         {
             scalingManager.isScaling = true;
+            scalingManager.lastCursorPos = GameObject.Find("Cursor").transform.position;
         }
     }
 

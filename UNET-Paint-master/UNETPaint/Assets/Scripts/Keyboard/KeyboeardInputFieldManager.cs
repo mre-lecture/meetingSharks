@@ -7,6 +7,9 @@ using System;
 
 public class KeyboeardInputFieldManager : MonoBehaviour,IInputClickHandler {
     public GameObject keyboardPrefab;
+    public float localPosX;
+    public float localPosY;
+    public float localPosZ;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
@@ -21,7 +24,7 @@ public class KeyboeardInputFieldManager : MonoBehaviour,IInputClickHandler {
             keyboard = Instantiate(keyboardPrefab);
             GameObject canvas = GameObject.Find("Canvas");
             keyboard.transform.SetParent(canvas.transform);
-            keyboard.transform.localPosition = new Vector3(1, -150, 0);
+            keyboard.transform.localPosition = new Vector3(localPosX, localPosY, localPosZ);
             keyboard.transform.rotation = new Quaternion(0, 0, 0, 0);
             keyboard.transform.localScale = new Vector3(1, 1, 1);
             keyboard.GetComponent<CustomKeyboardManager>().inputField = inputField;
