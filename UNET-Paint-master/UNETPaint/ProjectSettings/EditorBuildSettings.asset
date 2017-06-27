@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MeetingSharks/Scenes/scene01.unity
+    path: Assets/Scenes/scene01.unity
     guid: 8e9a4f56bbd13864baba1442e255cb07
   - enabled: 1
-    path: Assets/MeetingSharks/Scenes/scene02.unity
+    path: Assets/Scenes/scene02.unity
     guid: 5ca9d7948671b994eaa465cc82a6aa46
   - enabled: 1
-    path: Assets/MeetingSharks/Scenes/scene003.unity
+    path: Assets/Scenes/scene003.unity
     guid: c172c99f0e9a5f840bd5fd0fc61f49fe
   - enabled: 1
-    path: Assets/MeetingSharks/Scenes/scene004.unity
+    path: Assets/Scenes/scene004.unity
     guid: f322d01232aa563488cce64bb7da2171
