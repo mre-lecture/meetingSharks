@@ -54,7 +54,7 @@ public class DrawingManager : NetworkBehaviour
             selectedColorImage.color = color;
         }
 
-        if(GameObject.FindGameObjectWithTag("localPlayer").GetComponent<PlayerInfo>())
+        if(GameObject.FindGameObjectWithTag("localPlayer") && GameObject.FindGameObjectWithTag("localPlayer").GetComponent<PlayerInfo>())
         {
             useUsername = true;
         }
